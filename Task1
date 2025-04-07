@@ -1,0 +1,159 @@
+/* TASK 1 : API INTEGRATION (WEATHER APP) */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Weather App</title>
+  <style>
+    /* Basic reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Styling for the body */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    /* Weather container box */
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    /* Heading style */
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    /* Input field */
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    /* Button style */
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    /* Button hover effect */
+    button:hover {
+      background-color: #45a049;
+    }
+
+    /* Weather info box */
+    .weather-result {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .weather-result p {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    /* Weather icon size */
+    .weather-icon {
+      width: 80px;
+      height: 80px;
+      margin: 10px auto;
+    }
+
+    /* Responsive layout */
+    @media (max-width: 480px) {
+      .container {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Weather Checker</h1>
+    <!-- Input for entering city name -->
+    <input type="text" id="cityInput" placeholder="Enter city name" />
+    <!-- Button to trigger weather fetch -->
+    <button onclick="getWeather()">Get Weather</button>
+    <!-- Display area for weather results -->
+    <div class="weather-result" id="weather"></div>
+  </div>
+
+  <script>
+    // Your OpenWeatherMap API key
+    const apiKey = 'f80a734a0379a893decc22330651257e';
+
+    // Function to fetch and display weather data
+    function getWeather() {
+      const city = document.getElementById('cityInput').value;
+
+      // Show alert if city field is empty
+      if (!city) return alert('Please enter a city name');
+
+      // API endpoint with city and key
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+      // Fetch weather data from OpenWeatherMap
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          // If city is not found
+          if (data.cod !== 200) {
+            document.getElementById('weather').innerHTML = `<p>City not found</p>`;
+            return;
+          }
+
+          // Extract weather icon code
+          const iconCode = data.weather[0].icon;
+          const iconUrl = `http://openweathermap.org/img/wn/${iconCode}@2x.png`;
+
+          // HTML for displaying weather details with icon
+          const weatherHTML = `
+            <p><strong>${data.name}, ${data.sys.country}</strong></p>
+            <img src="${iconUrl}" alt="Weather Icon" class="weather-icon" />
+            <p>Temperature: ${data.main.temp} &deg;C</p>
+            <p>Condition: ${data.weather[0].main}</p>
+            <p>Humidity: ${data.main.humidity}%</p>
+          `;
+
+          // Insert weather data into page
+          document.getElementById('weather').innerHTML = weatherHTML;
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+          document.getElementById('weather').innerHTML = `<p>Unable to fetch weather data</p>`;
+        });
+    }
+  </script>
+</body>
+</html>
+
+  
+  
+  

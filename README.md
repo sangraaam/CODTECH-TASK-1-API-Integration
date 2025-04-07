@@ -43,3 +43,6 @@ Responsive Web Design – Ensures the application is functional and visually app
 Conclusion:
 This weather application is a great example of how modern web technologies can be used to create functional, real-time apps with external API integration. It highlights essential frontend development skills and serves as a strong beginner project for anyone looking to build web-based utilities using JavaScript and REST APIs.
 
+OUTPUT :
+![Image](https://github.com/user-attachments/assets/c91fef30-1bc1-4bb7-aee2-17b210d0e75d)
+

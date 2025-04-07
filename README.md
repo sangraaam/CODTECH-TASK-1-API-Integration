@@ -25,9 +25,13 @@ Project Description:
 
 Tools and Technologies Used:
 HTML5 – Used for structuring the content and user input forms.
+
 CSS3 – Applied for styling the app, adding responsiveness, and improving the user interface using flexbox, gradients, and media queries.
+
 JavaScript (Vanilla) – Powers the logic for fetching API data, handling errors, and dynamically updating the webpage content.
+
 OpenWeatherMap API – A third-party API used for retrieving real-time weather data based on city input.
+
 Responsive Web Design – Ensures the application is functional and visually appealing on all devices.
 
 Conclusion:

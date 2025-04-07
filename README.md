@@ -24,6 +24,7 @@ Project Description:
 6) The project not only enhances the user’s understanding of API integration in frontend development but also demonstrates practical usage of client-side web technologies. It provides a solid foundation for learning how to work with RESTful APIs, manage asynchronous data, and build interactive interfaces with minimal tools.
 
 Tools and Technologies Used:
+
 HTML5 – Used for structuring the content and user input forms.
 
 CSS3 – Applied for styling the app, adding responsiveness, and improving the user interface using flexbox, gradients, and media queries.
